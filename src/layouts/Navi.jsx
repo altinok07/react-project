@@ -1,7 +1,20 @@
-import React from "react";
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import CartSummary from "./CartSummary";
+import SignedOut from "./SignedOut";
+import SignedIn from "./SignedIn";
+
 export default function () {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  function handleSignOut() {
+    setIsAuthenticated(false);    
+  }
+
+  function handleSignIn() {
+    setIsAuthenticated(true)
+  }
+
   return (
     <div>
       <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -15,9 +28,7 @@ export default function () {
             </Nav>
             <Nav>
               <CartSummary />
-              <Nav.Link>
-                <Button variant="primary">Sign Up</Button>
-              </Nav.Link>
+              {isAuthenticated ? <SignedIn signOut={handleSignOut} /> : <SignedOut signIn={handleSignIn} />}
             </Nav>
           </Navbar.Collapse>
         </Container>
