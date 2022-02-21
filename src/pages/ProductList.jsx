@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import ProductService from "../services/productService";
+import { addToCart } from "../store/actions/cartActions";
 
 export default function ProductList() {
+  const dispatch = useDispatch();
+
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -12,6 +17,11 @@ export default function ProductList() {
       .getProducts()
       .then((result) => setProducts(result.data.data));
   }, []);
+
+  function handleAddToCart(product) {
+    dispatch(addToCart(product));
+    toast.success(`${product.productName} Sepete`);
+  }
 
   return (
     <div>
@@ -35,6 +45,11 @@ export default function ProductList() {
               <td>{p.categoryName}</td>
               <td>{p.unitsInStock}</td>
               <td>{p.unitPrice}</td>
+              <td>
+                <Button variant="secondary" onClick={() => handleAddToCart(p)}>
+                  Sepete Ekle
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>
