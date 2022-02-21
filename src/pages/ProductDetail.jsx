@@ -18,7 +18,7 @@ export default function ProductDetail() {
   return (
     <div>
       <Card>
-        <Card.Img variant="top" />
+        <Card.Img id="card-image" variant="top" src="https://via.placeholder.com/150" />
         <Card.Body>
           <Card.Title>{product.productName}</Card.Title>
           <Card.Text>
@@ -29,7 +29,6 @@ export default function ProductDetail() {
             <Row>
               <Col className="d-grid gap-2">
                 <Button variant="outline-success">
-                  {" "}
                   <h2 className="bi bi-cart"> Sepete Ekle</h2>{" "}
                 </Button>
               </Col>

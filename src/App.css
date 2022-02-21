@@ -17,3 +17,17 @@
 #signUp{
   margin-right: 0.5em;
 }
+
+#card-image{
+  height: 400px;
+  width: auto;
+}
+
+#productName{
+  color: rgba(5, 99, 143, 0.808);
+  text-decoration: none;
+}
+
+#productName:hover{
+  text-decoration: underline;
+}

@@ -19,7 +19,7 @@ export default function ProductList() {
         <thead>
           <tr>
             <th>Product Name</th>
-            <th>Category Id</th>
+            <th>Category Name</th>
             <th>Units In Stock</th>
             <th>Unit Price</th>
           </tr>
@@ -28,9 +28,11 @@ export default function ProductList() {
           {products.map((p) => (
             <tr key={p.productId}>
               <td>
-                <Link to={`/products/${p.productId}`}>{p.productName}</Link>
+                <Link to={`/products/${p.productId}`} id="productName">
+                  {p.productName}
+                </Link>
               </td>
-              <td>{p.categoryId}</td>
+              <td>{p.categoryName}</td>
               <td>{p.unitsInStock}</td>
               <td>{p.unitPrice}</td>
             </tr>
